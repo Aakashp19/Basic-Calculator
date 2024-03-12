@@ -417,13 +417,10 @@ function main() {
         isSecondOperator &&
         length === 2
       ) {
-        // Handle case where expressions is 5 *
-
         // console.log('explicit && isFirstNumber && isSecondOperator');
         expressions.push(currentOperand);
       } else if (explicit && isOperator(last)) {
         // Handle case where expressions is ['5', '*', '4', '+'] and
-        // the total is being explicitly being requested
 
         // console.log('explicit && isOperator(last)', isOperator(last), last);
         if (mode & MODE_INSERT_OPERAND) {
@@ -575,12 +572,6 @@ function main() {
       },
     },
   });
-
-  // [...document.querySelectorAll('.btest')].forEach(item => {
-  // 	item.addEventListener('click', () => {
-  // 		console.log('btest');
-  // 	});
-  // })
 
   const app = new Vue({
     el: $app,
@@ -758,8 +749,6 @@ function main() {
   window.addEventListener("keydown", function onWindowKeydown(e) {
     const { keyCode: key, ctrlKey, shiftKey } = e;
 
-    // console.log(key, e.key, e.which);
-
     if (shiftKey && key === Key["9"]) {
       store.dispatch(ACTION_ADD_PAREN, {
         operator: "(",
@@ -899,11 +888,6 @@ const { MathParser, isOperator, operators } = (function (module) {
 
   const isOperator = (exports.isOperator = (str) =>
     operators.includes(str));
-
-  /**
-   * Courtesy of
-   * http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
-   */
 
   function escapeRegExp(str) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -1281,8 +1265,6 @@ const { MathParser, isOperator, operators } = (function (module) {
     "/": (a, b) => a / b,
     "%": (a, b) => a % b,
     "**": (a, b) => Math.pow(a, b),
-    // NOTE: Apparently this is a naive implementation of nth root
-    // http://stackoverflow.com/questions/7308627/javascript-calculate-the-nth-root-of-a-number
     yroot: (a, b) => Math.pow(a, 1 / b),
   };
 
